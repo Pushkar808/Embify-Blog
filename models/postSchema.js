@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 const multer = require('multer')
 const path = require('path')
-const BlogIMG = path.join('/uploads/users/blog')
+const BlogIMG = path.join('uploads/users/blog')
+const apath=path.join(__dirname, '..', BlogIMG)
 
-const UserSchema = mongoose.Schema({//Db structure
+console.log(apath)
+const PostSchema = mongoose.Schema({//Db structure
     heading: {
         type: String,
         required: true
@@ -11,6 +13,9 @@ const UserSchema = mongoose.Schema({//Db structure
     description: {
         type: String,
         required: true
+    },
+    postImage:{
+        type:String
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
@@ -21,7 +26,7 @@ const UserSchema = mongoose.Schema({//Db structure
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, path.join(__dirname, '..', BlogIMG))
+        cb(null, apath)
     },
     filename: function (req, file, cb) {
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
@@ -30,5 +35,10 @@ const storage = multer.diskStorage({
 })
 
 
-const User = mongoose.model('User', UserSchema);
-module.exports = User
+//static methods
+PostSchema.statics.uploadIMG=multer({storage:storage}).single('image');
+PostSchema.statics.path= BlogIMG;
+
+
+const Post = mongoose.model('post', PostSchema);
+module.exports = Post
