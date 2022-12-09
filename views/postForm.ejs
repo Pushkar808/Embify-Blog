@@ -1,7 +1,7 @@
-<div class="container border border-secondary" id="addPost">
+<div class="container" id="addPost">
   <div class="row">
     <div class="col-sm">
-      <img src="images/Lifesavers - Hand.png" id="addPostimg">
+      <img src="images/Humaaans - Space.png" id="addPostimg">
     </div>
     <div class="col-sm">
       <!-- Button trigger modal -->
@@ -19,11 +19,11 @@
               </button>
             </div>
             <div class="modal-body">
-                <!--form to add post -->
+              <!--form to add post -->
               <form action="/v1/createPost" method="POST" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="heading">Blog Heading</label>
-                  <input type="text" class="form-control" id="heading" aria-describedby="emailHelp" placeholder="Enter Heading" name="heading" required >
+                  <input type="text" class="form-control" id="heading" aria-describedby="emailHelp" placeholder="Enter Heading" name="heading" required>
                   <small id="emailHelp" class="form-text text-muted">Give precise and easy to understand heading here</small>
                 </div>
                 <div class="form-group">
@@ -31,10 +31,10 @@
                   <textarea type="text" class="form-control" id="blogcontent" aria-describedby="emailHelp" placeholder="What do you want to talk about ?" rows="3" name="description" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="file">Add images</label>
-                    <input type="file" class="form-control" id="file" name="image" required>
-                    <small id="emailHelp" class="form-text text-muted">Give relevant supporting image here.</small>
-                  </div>
+                  <label for="file">Add images</label>
+                  <input type="file" class="form-control" id="file" name="image" required>
+                  <small id="emailHelp" class="form-text text-muted">Give relevant supporting image here.</small>
+                </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-secondary modal_close_button" data-dismiss="modal">Close</button>
                   <button type="submit" class="btn btn-primary">Save changes</button>

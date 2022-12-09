@@ -1,5 +1,6 @@
 <div class="container-fluid">
   <div class="row homeposts">
+    <h1>Users Post</h1>
     <% data.forEach((post)=>{ %>
     <div class="col" onclick="location.href='/v1/viewfullPost/?id=<%= post.id %>'">
       <div class="card card-container" style="width:14rem;">
@@ -22,4 +23,45 @@
     </div>
     <% }) %>
   </div>
+  <div class="row homeposts">
+    <h1>Top 10 News</h1>
+    <div class="row" id="topcontainer">
+
+    </div>
+  </div>
 </div>
+
+<script>
+  (function() {
+    fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=300be0372ce64ead840346911752051c')
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        data.articles.forEach(element => {
+          $('#topcontainer').append(`
+          <div class="col" onclick="location.href='${element.url}'">
+      <div class="card card-container" style="width:14rem;">
+        <div class="postCard">
+          
+          <img class="card-img-top" src="${element.urlToImage?element.urlToImage:'/images/No-image.png'}" alt="No preview">
+        </div>
+        <div class="card-body overflow-hidden" style="max-height:10rem;">
+          <h5 class="card-title">${element.title?element.title:"Heading Not Available"}</h5>
+          <p class="card-text ">
+            ${element.description?element.description:"Not available"}
+          </p>
+          <p class="card-text ">
+            Posted By: ${element.author?element.author:"Not available"}
+          </p>
+        </div>
+        <div class="card-body">
+          <a href="${element.url}" class="card-link GotoPost">Goto Post</a>
+        </div>
+      </div>
+    </div>
+    </div>
+            `)
+        });
+      });
+  })();
+</script>

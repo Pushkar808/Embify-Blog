@@ -52,7 +52,13 @@ module.exports.createPost = (req, res) => {
 
 //module to view full post with the help of id supplied
 module.exports.viewfullPost = (req, res) => {
-
+    if (!req.isAuthenticated()) {
+        return res.status(500).json({
+            Error: {
+                message: "Please Sign in to post"
+            }
+        });
+    }
     Post.findById(req.query.id)
         .populate('createdBy', 'name')
         .exec((err, data) => {
