@@ -27,6 +27,8 @@ $('.modal_button').click(() => {
     $('#myModal').modal('show');
 })
 
-$('.modal_close_button').click(()=>{
+$('.modal_close_button').click(() => {
     $('#myModal').modal('hide');
 });
+
+

@@ -3,11 +3,13 @@ const Post = require('../models/postSchema')
 
 
 module.exports.home = (req, res) => {
-    Post.find({}, (err, data) => {
-        res.render("index" , {
-            data:data
-        });
-    })
+    Post.find({})
+        .populate('createdBy', 'name')//return only name of the user for security reasons
+        .exec((err, data) => {
+            res.render("index", {
+                data: data
+            });
+        })
 }
 module.exports.login = (req, res) => {
     if (req.isAuthenticated()) {//if user is already signed in the don't show login form

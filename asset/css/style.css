@@ -6,7 +6,9 @@
     padding: 20px;
     display: none;
 }
-
+.container{
+    position: relative;
+}
 #editForm {
     margin: auto;
     margin-top: 90px;
@@ -26,4 +28,30 @@
     width:100%;
     border-radius:50px;
     padding:10px;
+}
+.homeposts{
+    display: flex;
+    padding:30px;
+    flex-wrap: wrap;
+    margin:10px;
+}
+.card-container{
+    cursor: pointer;
+    margin:10px;
+}
+.card-container:hover{
+    border:1px solid black;
+    box-shadow:1px 1px 10px 1px;
+}
+.postCard{ /*post at home*/
+    padding:5px;
+    margin:auto;
+} 
+.postCard img{
+    height:200px;
+}
+#backgroundImage{
+    width:auto;
+    height:auto;
+    position: absolute;
 }

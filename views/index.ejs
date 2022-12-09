@@ -1,9 +1,25 @@
-<div class="container">
-    <% data.forEach((datas)=>{ %>
-        <p><%= datas %></p>
-        <img src="<%= datas.postImage %>" >
-        <img src="\uploads\\users\\blog/image-1670515066402-951058758"
-        <p> <%= datas.postImage %> </p>
-
+<div class="container-fluid">
+  <div class="row homeposts">
+    <% data.forEach((post)=>{ %>
+    <div class="col" onclick="location.href='/v1/viewfullPost/?id=<%= post.id %>'">
+      <div class="card card-container" style="width:14rem;">
+        <div class="postCard">
+          <img class="card-img-top" src="<%= post.postImage %>" alt="Card image cap">
+        </div>
+        <div class="card-body overflow-hidden" style="max-height:10rem;">
+          <h5 class="card-title"><%= post.heading %></h5>
+          <p class="card-text ">
+            <%= post.description %>
+          </p>
+          <p class="card-text ">
+            Posted By: <%= post.createdBy.name %>
+          </p>
+        </div>
+        <div class="card-body">
+          <a href="/v1/viewfullPost/?id=<%= post.id %>" class="card-link GotoPost">Goto Post</a>
+        </div>
+      </div>
+    </div>
     <% }) %>
+  </div>
 </div>

@@ -6,7 +6,6 @@ const postController=require('../controllers/postController');
 // router.use('/edit',adminController.edit);
 // router.use('/editmemData',adminController.editmemData);
 // router.use('/resetPassword',adminController.resetPassword);
- 
 router.use('/',postController.home)
 
 module.exports=router;
